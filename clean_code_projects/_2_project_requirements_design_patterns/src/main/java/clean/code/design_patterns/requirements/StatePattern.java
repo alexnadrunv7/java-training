@@ -24,7 +24,7 @@ class StatePattern
         @Override
         public String toString()
         {
-            return String.format("Fan Wall Control [current = %s]", current);
+            return String.format("Fan Wall Control is [current = %s]", current);
         }
     }
 

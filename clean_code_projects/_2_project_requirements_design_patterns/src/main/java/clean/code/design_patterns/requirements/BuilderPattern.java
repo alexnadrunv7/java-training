@@ -47,7 +47,7 @@ class BuilderPattern
         @Override
         public String toString()
         {
-            return String.format("Coffee [type=%s, sugar=%s, size=%s]", this.type, sugar, size);
+            return String.format("Tea [type=%s, sugar=%s, size=%s]", this.type, this.sugar, this.size);
         }
     }
 }
