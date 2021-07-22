@@ -2,11 +2,11 @@ package clean.code.design_patterns.requirements;
 
 class StatePattern
 {
-    static class FanWallControl
+    static class GearBox
     {
         private SpeedLevel current;
 
-        public FanWallControl()
+        public GearBox()
         {
             current = new Off();
         }
@@ -24,60 +24,68 @@ class StatePattern
         @Override
         public String toString()
         {
-            return String.format("Fan Wall Control is [current = %s]", current);
+            return String.format("Current gear is [current = %s]", current);
         }
     }
 
     interface SpeedLevel
     {
-        void press(FanWallControl fanWallControl);
+        void press(GearBox gearBox);
     }
 
     static class Off implements SpeedLevel
     {
-        public void press(FanWallControl fanWallControl)
+        public void press(GearBox gearBox)
         {
-            fanWallControl.setState(new SpeedLevel1());
+            gearBox.setState(new SpeedLevel1());
         }
     }
 
     static class SpeedLevel1 implements SpeedLevel
     {
-        public void press(FanWallControl fanWallControl)
+        public void press(GearBox gearBox)
         {
-            fanWallControl.setState(new SpeedLevel2());
+            gearBox.setState(new SpeedLevel2());
         }
     }
 
     static class SpeedLevel2 implements SpeedLevel
     {
-        public void press(FanWallControl fanWallControl)
+        public void press(GearBox gearBox)
         {
-            fanWallControl.setState(new SpeedLevel3());
+            gearBox.setState(new SpeedLevel3());
         }
     }
 
     static class SpeedLevel3 implements SpeedLevel
     {
-        public void press(FanWallControl fanWallControl)
+        public void press(GearBox gearBox)
         {
-            fanWallControl.setState(new SpeedLevel4());
+            gearBox.setState(new SpeedLevel4());
         }
     }
 
     static class SpeedLevel4 implements SpeedLevel
     {
-        public void press(FanWallControl fanWallControl)
+        public void press(GearBox gearBox)
         {
-            fanWallControl.setState(new SpeedLevel5());
+            gearBox.setState(new SpeedLevel5());
         }
     }
 
     static class SpeedLevel5 implements SpeedLevel
     {
-        public void press(FanWallControl fanWallControl)
+        public void press(GearBox gearBox)
         {
-            fanWallControl.setState(new Off());
+            gearBox.setState(new SpeedLevel6());
+        }
+    }
+
+    static class SpeedLevel6 implements SpeedLevel
+    {
+        public void press(GearBox gearBox)
+        {
+            gearBox.setState(new Off());
         }
     }
 }
